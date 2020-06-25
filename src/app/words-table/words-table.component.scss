@@ -1,0 +1,43 @@
+table {
+    width: 100%;
+  }
+
+.red{
+    background-color: rgba(201, 62, 37, 0.671);
+}
+
+.green{
+    background-color: rgba(8, 117, 57, 0.644);
+}
+
+.mat-column-Word {
+    width: 40% !important;
+}
+
+.mat-column-Value {
+    width: 40% !important;
+}
+
+.mat-column-Action {
+    width: 20% !important;
+    text-align: end;
+}
+
+.icon-class{
+    cursor: pointer;
+}
+
+.table-actions-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    
+    .words-actions{
+            width: 50%;
+            padding:10px
+    }
+}
+
+

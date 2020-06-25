@@ -1,0 +1,17 @@
+<section class="signup-form">
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="9px"  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <mat-form-field hintLabel="Enter Word">
+        <input type="text" matInput placeholder="Enter word" required formControlName="textFormControl">
+        <mat-error *ngIf="myForm.get('textFormControl').hasError('required')">Field must not be empty.</mat-error>  
+      </mat-form-field>
+      <mat-form-field hintLabel="Number must be between -1 and 1">
+        <input type="number" matInput placeholder="Number" required   formControlName="numberFormControl">
+        <mat-error *ngIf="myForm.get('numberFormControl').hasError('required')">Field must not be empty.</mat-error> 
+        <mat-error  *ngIf="!myForm.get('numberFormControl').hasError('required') && (myForm.get('numberFormControl').hasError('minlength') || myForm.get('numberFormControl').hasError('maxlength'))">Number must be between -1 and 1</mat-error>
+
+        <!-- <mat-hint align="end">Value must be between 0 and 1</mat-hint> -->
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" [disabled]="myForm.invalid"
+              [@buttonState]="myForm.valid ? 'valid' : 'invalid'"><mat-icon>done</mat-icon></button>
+    </form>
+  </section>

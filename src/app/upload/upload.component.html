@@ -1,0 +1,40 @@
+<div class="center">
+    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" directory="false" multiple="false"
+        accept=".pdf">
+        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+            Optional custom content that replaces the the entire default content.
+            <button type="button" (click)="openFileSelector()">Browse Files</button>
+        </ng-template>
+    </ngx-file-drop>
+    <div class="table-wraper" *ngIf="gradedFiles.length>0">
+        <table id="file-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody class="upload-name-style">
+                <tr *ngFor="let item of gradedFiles; let i=index">
+                    <td><strong>{{ item.fileName }}</strong></td>
+                    <td>{{ item.grade }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <div>
+            <form #f="ngForm" (ngSubmit)="onSubmitText(f)">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea matInput placeholder="Add text to analize..." name="textInput" ngModel #textInput="ngModel"></textarea>
+                </mat-form-field>
+                <button type="submit" mat-raised-button color="primary">
+                    <mat-icon>done</mat-icon>
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+</div>

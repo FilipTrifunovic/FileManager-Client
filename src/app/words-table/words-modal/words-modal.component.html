@@ -1,0 +1,34 @@
+<!-- dialog-box.component.html -->
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+<div mat-dialog-content>
+  <div *ngIf="action != 'Delete'; else elseTemplate">
+        <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="9px"  [formGroup]="myForm">
+          <mat-form-field hintLabel="Enter Word">
+            <input type="text" matInput placeholder="Enter word" required formControlName="textFormControl">
+            <mat-error *ngIf="myForm.get('textFormControl').hasError('required')">Field must not be empty.</mat-error>  
+          </mat-form-field>
+          <mat-form-field hintLabel="Number must be between -1 and 1">
+            <input type="number" matInput placeholder="Number" required   formControlName="numberFormControl" min="-1" max="1">
+            <mat-error *ngIf="myForm.get('numberFormControl').hasError('required')">Field must not be empty.</mat-error> 
+            <mat-error  *ngIf="(myForm.get('numberFormControl').hasError('min') || myForm.get('numberFormControl').hasError('max'))">Number must be between -1 and 1</mat-error>
+    
+            <!-- <mat-hint align="end">Value must be between 0 and 1</mat-hint> -->
+          </mat-form-field>
+        </form>
+
+  </div>
+
+  <ng-template #elseTemplate>
+    Sure to delete <b>{{local_data.text}}</b>?
+  </ng-template>
+</div>
+<div mat-dialog-actions>
+  <ng-template #deleteBtn>
+    <button mat-button  (click)="doAction()">{{action}}</button>
+  </ng-template>
+  
+  <button *ngIf="action != 'Delete' ; else deleteBtn" (click)="doAction()"
+   type="submit" mat-raised-button color="primary" [disabled]="myForm.invalid"
+  [@buttonState]="myForm.valid ? 'valid' : 'invalid'"><mat-icon>done</mat-icon></button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>
