@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -13,8 +11,6 @@ import { MaterialModuel } from './shared/material.module';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { UIService } from './shared/ui.service';
-import { AuthGard } from './auth/auth-guard.service';
-import { AuthService } from './auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { UploadComponent } from './upload/upload.component';
@@ -26,8 +22,6 @@ import { UploadService } from './upload/upload.service';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     HomeComponent,
 
     SidenavListComponent,
@@ -51,7 +45,7 @@ import { UploadService } from './upload/upload.service';
   entryComponents: [
     WordsModalComponent
   ],
-  providers: [UIService,AuthGard,AuthService,UploadService],
+  providers: [UIService,UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
