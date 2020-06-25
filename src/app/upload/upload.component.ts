@@ -56,7 +56,6 @@ export class UploadComponent {
         });
       } else {
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
       }
     }
   }
@@ -66,7 +65,6 @@ export class UploadComponent {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     })
-    console.log(f.value.textInput);
     this.http.post('http://localhost:5000/api/files/text', JSON.stringify(f.value.textInput), { headers })
       .subscribe(data => {
         this._snackBar.open(`The input text has a score of ${data}`, "Ok", {

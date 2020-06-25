@@ -30,8 +30,7 @@ export class WordsModalComponent {
     
       this.action = data.action;
     this.local_data=data.object;
-    console.log(this.local_data);
-    console.log(this.action);
+ 
 
 
     this.myForm = this._formBuilder.group({

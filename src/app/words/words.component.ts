@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { WordsDto } from './words.model';
 
 @Component({
-    selector: 'app-login',
+    selector: 'words-component',
     templateUrl: './words.component.html',
     styleUrls: ['./words.component.scss'],
     animations: [
@@ -30,9 +30,8 @@ export class WordsComponent implements OnInit {
 
     onSubmit() {
         var formValues = this.myForm.value;
-        console.log(this.myForm.value);
         var wordDto = new WordsDto(formValues.textFormControl, formValues.numberFormControl)
-        this.http.post('http://localhost:5000/api/Words', wordDto).subscribe(res => {
+        this.http.post('http://main:5000/api/Words', wordDto).subscribe(res => {
             
         });
     }
